@@ -15,7 +15,7 @@ Route::get('/usuarios/nuevo', function (){
 });
 
 Route::get('/usuarios/{id}', function ($id) {
-    return 'Mostrando detalle del usuario '.$id;
+    return "Mostrando detalle del usuario: {$id}";
 });
 //->where('id', '[0-9]+'); Para parametros numericos
 //->where('id', '\d'); Para parametros numericos
