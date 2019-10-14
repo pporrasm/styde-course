@@ -24,13 +24,14 @@ Route::get('/usuarios/{id}', function ($id) {
 //Agregar signo de interragación en el parametro que quiera que sea opcional
 //Los valores son opcioens o valores por defecto que se colocan en la funcion
 Route::get('/saludo/{name?}/{nickname?}', function ($name = null,$nickname=null){
+    $name=ucfirst($name);
     if ($name == null){
         return "No se encontraron valores";
     } else {
         if ($nickname != null){
             return "Hola {$name}, tu apodo es {$nickname}";   
             } else{
-                return "Hola {$name}, no tienes apodo";
+                return "Hola {$name}";
         
             }
     }
