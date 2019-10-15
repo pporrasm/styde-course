@@ -6,15 +6,17 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index(){
-        //uso de arreglo estatico
-        $users = [
-            'Juan',
-            'Pedro',
-            'Jose',
-            'Julian',
-            '<script>alert("CLicker")</script>'
-        ];
+    public function index()
+    {
+        if (\request()->has('empty')) {
+           $users = [];
+        } else {
+            //uso de arreglo estatico
+            $users = [
+                'Juan','Pedro','Jose','Julian'
+            ];
+        }
+
         $title = "Listado de usuarios!";
 
         //dd () Helper de debug de laravel similar al var_dump
@@ -30,20 +32,22 @@ class UserController extends Controller
             'title'=> 'Listado de Usuarios!' 
         ]); Envio con el argunto with**/
         //return view('users')->with('users', $users)->with('title', 'Listado de Usuarios!');
-   
 
-        return view('users', compact('users','title'));
+
+        return view('users', compact('users', 'title'));
     }
 
-    public function show($id){
+    public function show($id)
+    {
         return "Mostrando detalle del usuario: {$id}";
     }
 
-    public function create(){
+    public function create()
+    {
         return "Nuevo usuario";
-
     }
-    public function edit($id){
+    public function edit($id)
+    {
         return "Editar usuario: {$id}";
     }
 }
