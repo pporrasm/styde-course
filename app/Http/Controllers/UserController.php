@@ -39,15 +39,27 @@ class UserController extends Controller
 
     public function show($id)
     {
-        return "Mostrando detalle del usuario: {$id}";
+        //return "Mostrando detalle del usuario: {$id}";
+        $title = "Detalles del usuario: {$id}";
+        //dd(compact('id', 'title'));
+        return view ('userdetails', compact('id', 'title'));
     }
 
     public function create()
     {
-        return "Nuevo usuario";
+        //return "Nuevo usuario";
+        $title = "Crear nuevo usuario";
+        return view('createuser', compact('title'));
     }
     public function edit($id)
-    {
-        return "Editar usuario: {$id}";
+    {   
+        if($id = 20){
+            $name = "Pedro Porras";
+            $username = "pporras";
+            $email = "pporrasm@miumg.edu.gt";
+        }
+        //return "Editar usuario: {$id}";
+        $title = "Editar usuario";
+        return view ('edituser', compact('id','title','name', 'username', 'email'));
     }
 }
