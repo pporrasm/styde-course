@@ -34,7 +34,7 @@ class UserController extends Controller
         //return view('users')->with('users', $users)->with('title', 'Listado de Usuarios!');
 
 
-        return view('users', compact('users', 'title'));
+        return view('users.index', compact('users', 'title'));
     }
 
     public function show($id)

@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Listado de Usuarios</title>
-</head>
-<body>
+@extends('layout')
+<!--Para evitar utilizar un include para el header y para el footer-->
     <!--Sintaxis corta para PHP -->
+@section('title', "{$title}")
+@section('content')
+        
     <h1>{{ $title }}</h1>
     <hr>
     <h2>if</h2>
@@ -54,6 +50,4 @@
             <p> No existen usuarios registrados </p> 
         @endforelse
     </ul>
-
-</body>
-</html>
+@endsection
