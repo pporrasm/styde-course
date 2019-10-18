@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\User;
-use App\Models\Profession;
+use App\Profession;
 
 class UserSeeder extends Seeder
 {
@@ -36,6 +36,9 @@ class UserSeeder extends Seeder
             'password' => bcrypt('laravel'),
             'profession_id' => $professionId
         ]); */
+
+        /* $professions = Profession::all();
+        dd($professions); */
         User::create([
             'name' => 'Pedro Porras',
             'email' => 'pporras@pm.me',
