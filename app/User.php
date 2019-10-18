@@ -23,7 +23,20 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function emailFind($email){
+        return User::where(compact('email'))->first();
+    }
+
+    public function isAdmin(){
+        return $this->email ==='pporras@pm.me';
+    }
+
+
+
 }
