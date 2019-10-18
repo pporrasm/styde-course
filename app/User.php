@@ -29,6 +29,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    //Para convertir de entero a booleano
+    protected $casts = [
+        'isadmin' => 'boolean'
+    ];
+
     public static function emailFind($email){
         return User::where(compact('email'))->first();
     }
