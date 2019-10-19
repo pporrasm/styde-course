@@ -50,7 +50,8 @@ class ProfessionSeeder extends Seeder
         Profession::create([
             'title' => 'QA Developer'
         ]);
-        
+        //createcion de 17 profesiones aleatorias.
+        factory(Profession::class)->times(17)->create();
         
        
     }

@@ -39,14 +39,14 @@ class UserSeeder extends Seeder
 
         /* $professions = Profession::all();
         dd($professions); */
-        User::create([
+        /**User::create([
             'name' => 'Pedro Porras',
             'email' => 'pporras@pm.me',
             'password' => bcrypt('laravel'),
             'profession_id' => $professionId,
             'is_admin' => true
         ]);
-        User::create([
+       User::create([
             'name' => 'Pablo Medina',
             'email' => 'pmedina@ht.com',
             'password' => bcrypt('123laravel'),
@@ -57,6 +57,22 @@ class UserSeeder extends Seeder
             'email' => 'mlopez@mail.com',
             'password' => bcrypt('laravel123'),
             'profession_id' => null
+        ]);*/
+        factory(User::class)->create([
+            'name' => 'Pedro Porras',
+            'email' => 'pporras@pm.me',
+            'password' => bcrypt('laravel'),
+            'profession_id' => $professionId,
+            'is_admin' => true
         ]);
+
+        factory(User::class)->create([
+            'profession_id' => $professionId
+        ]);
+
+        //Creación de 75 usuarios aleatorios
+        //factory(User::class,75)->create();
+        factory(User::class,75)->create();
+
     }
 }
