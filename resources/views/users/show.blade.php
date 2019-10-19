@@ -14,7 +14,13 @@
         {{ $title }}
       </h1>
       <p class="subtitle">
-        ID usuario {{ $id }}
+        ID usuario {{ $user->id }}
+      </p>
+      <p class="subtitle">
+        Nombre: {{ $user->name }}
+      </p>
+      <p class="subtitle">
+        Email: {{ $user->email }}
       </p>
     </div>
   </section>

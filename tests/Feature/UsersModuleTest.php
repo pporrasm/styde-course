@@ -2,29 +2,51 @@
 
 namespace Tests\Feature;
 
+use App\User;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UsersModuleTest extends TestCase
 {
+    //Hace un migrate:refresh al ejecutar las pruebas, en la DB definida en la variabla DB_DATABASE del phpunit.xml
+    use RefreshDatabase;
     /**
      * @test
      */
     function prueba_de_carga_de_usuarios()
     {
         //$this->assertTrue(true);
+        factory(User::class)->create(['name' => 'Joel', 'website' => 'myblogsite.top']);
+
+        factory(User::class)->create([
+                'name' => 'Elie',
+        ]);
+
         $this->get('/usuarios')
             ->assertStatus(200)
-            ->assertSee('Hola usuario');
+            ->assertSee('Joel')
+            ->assertSee('Elie');
     }
     /**
      * @test
      */
+    function usuario_no_registrados(){
+        //DB::table('users')->truncate();
+        $this->get('/usuarios')
+            ->assertStatus(200)
+            ->assertSee('No existen usaurios registrados.');
+    }
+    
+    /**
+     * @test
+     */
     function prueba_de_carga_detalle_usuario(){
-        $this->get('/usuarios/90')
+        $user = factory(User::class)->create(['name' => 'Pedro Porras']);
+        $this->get('/usuarios/'.$user->id)
         ->assertStatus(200)
-        ->assertSee("Mostrando detalle del usuario: 90");
+        ->assertSee("Pedro Porras");
     }
     /**
      * @test
@@ -33,7 +55,7 @@ class UsersModuleTest extends TestCase
         $this->withoutExceptionHandling();
         $this->get('/usuarios/nuevo')
         ->assertStatus(200)
-        ->assertSee("Nuevo usuario");
+        ->assertSee("Crear nuevo usuario");
     }
     /**
      * @test
@@ -41,7 +63,7 @@ class UsersModuleTest extends TestCase
     function it_edit_user(){
         $this->get('/usuarios/29/edit')
         ->assertStatus(200)
-        ->assertSee("Editar usuario: 29");
+        ->assertSee("Editar usuario");
     }
 
 }

@@ -10,11 +10,11 @@
     @if (! empty($users))
         <ul>
             @foreach ($users as $user)
-                <li>{{ $user }}</li>
+                <li>{{ $user->name }}. {{ $user -> email }}</li>
             @endforeach
         </ul>
     @else
-        <p> No existen usuarios registrados </p>
+        <p> No existen usaurios registrados. </p>
     @endif
 
     <hr>
@@ -22,21 +22,21 @@
     @unless (empty($users))
         <ul>
             @foreach ($users as $user)
-                <li>{{ $user }}</li>
+                <li>{{ $user->name }}</li>
             @endforeach
         </ul>
     @else
-        <p> No existen usuarios registrados </p>
+        <p> No existen usaurios registrados. </p>
     @endunless
 
     <hr>
     <h2>empty</h2>
     @empty($users)
-        <p> No existen usuarios registrados </p> 
+        <p> No existen usaurios registrados. </p>
     @else
         <ul>
             @foreach ($users as $user)
-                <li>{{ $user }}</li>
+                <li>{{ $user->name }}</li>
             @endforeach
         </ul>
     @endempty
@@ -45,9 +45,9 @@
     <h2>forelse</h2>
     <ul>
         @forelse ($users as $user)
-            <li>{{ $user }}</li>
+            <li>{{ $user->name }}</li>
         @empty
-            <p> No existen usuarios registrados </p> 
+            <p> No existen usaurios registrados. </p>
         @endforelse
     </ul>
 @endsection
