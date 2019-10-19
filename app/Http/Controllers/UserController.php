@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\User;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -53,14 +54,16 @@ class UserController extends Controller
     {
         //return "Mostrando detalle del usuario: {$id}";
         $title = 'Detalle de usuarios';
-        $user = User::find($id);
+        /**$user = User::find($id);
         if ($user == null){
-            return view('errors.404');
-        }
+            return response()->view('errors.404',[],404);
+        }*/
         //dd($user);
         //$title = "Detalles del usuario: {$id}";
         //dd(compact('id', 'title'));
         //return view ('user.show', compact('id', 'title'));
+        //Automaticamente se finaliza la ejecución y publica 404 page
+        $user = User::findOrFail($id);
         return view ('users.show', compact( 'user', 'title'));
     }
 

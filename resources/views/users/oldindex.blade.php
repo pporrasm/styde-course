@@ -1,9 +1,9 @@
 @extends('layout')
 <!--Para evitar utilizar un include para el header y para el footer-->
-    <!--Sintaxis corta para PHP -->
+<!--Sintaxis corta para PHP -->
 @section('title', "{$title}")
 @section('content')
-        
+
     <h1>{{ $title }}</h1>
     <hr>
     <h2>if</h2>

@@ -1,11 +1,11 @@
 @extends('layout')
 <!--Para evitar utilizar un include para el header y para el footer-->
-    <!--Sintaxis corta para PHP -->
+<!--Sintaxis corta para PHP -->
 @section('title', 'Listado de Usuarios')
 
 @section('content')
     <h1>{{ $title }}</h1>
-    <hr />
+    <hr/>
     <ul>
         @forelse ($users as $user)
             <li>
@@ -20,5 +20,5 @@
         @endforelse
     </ul>
 
-    <hr />
+    <hr/>
 @endsection
