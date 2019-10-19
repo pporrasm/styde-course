@@ -46,7 +46,7 @@ class UserController extends Controller
             ->with('users', User::all())
             ->with('title', 'Listado de usuarios');*/
 
-        return view('users.index', compact('users', 'title'));
+        return view('users.index', compact('title', 'users'));
     }
 
     public function show($id)
@@ -54,6 +54,9 @@ class UserController extends Controller
         //return "Mostrando detalle del usuario: {$id}";
         $title = 'Detalle de usuarios';
         $user = User::find($id);
+        if ($user == null){
+            return view('errors.404');
+        }
         //dd($user);
         //$title = "Detalles del usuario: {$id}";
         //dd(compact('id', 'title'));

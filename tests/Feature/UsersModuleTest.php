@@ -65,5 +65,12 @@ class UsersModuleTest extends TestCase
         ->assertStatus(200)
         ->assertSee("Editar usuario");
     }
-
+    /**
+     * @test
+     */
+    function user_not_found(){
+        $this->get('/usuarios/999')
+            ->assertStatus(404)
+            ->assertSee('Usuario no encontrado');
+    }
 }

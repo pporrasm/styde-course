@@ -72,7 +72,7 @@ class UserSeeder extends Seeder
 
         //Creación de 75 usuarios aleatorios
         //factory(User::class,75)->create();
-        factory(User::class,75)->create();
+        factory(User::class,10)->create();
 
     }
 }
