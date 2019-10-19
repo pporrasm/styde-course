@@ -14,8 +14,9 @@ Route::get('/usuarios/{id}/edit', 'UserController@edit')->where('id', '[0-9]+');
 
 //Utilizarse con el helper action
 //Route::get('/usuarios/detalles/{id}', 'UserController@show');
-Route::get('/usuarios/{id}', 'UserController@show')
-    ->where('id', '[0-9]+')
+//Route::get('/usuarios/{id}', 'UserController@show')
+Route::get('/usuarios/{user}', 'UserController@show')
+    ->where('user', '[0-9]+')
     ->name('users.show');
 
 //->where('id', '[0-9]+'); Para parametros numericos
