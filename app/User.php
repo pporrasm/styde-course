@@ -31,15 +31,22 @@ class User extends Authenticatable
 
     //Para convertir de entero a booleano
     protected $casts = [
-        'isadmin' => 'boolean'
+        'is_admin' => 'boolean'
     ];
 
     public static function emailFind($email){
         return User::where(compact('email'))->first();
     }
 
+        //profession_id
+    public function profession(){
+        //Si no se usan las conveciones por ejemplo que fuera id_profession
+        ///return $this->belongsTo(Profession::class, 'id_profession');
+        return $this->belongsTo(Profession::class);
+    }
+
     public function isAdmin(){
-        return $this->email ==='pporras@pm.me';
+        return $this->is_admin;
     }
 
 
