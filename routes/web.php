@@ -10,6 +10,10 @@ Route::get('/usuarios', 'UserController@index')
 Route::get('/usuarios/nuevo', 'UserController@create')
     ->name('users.create');
 
+//Route::post('/usuarios/crear', 'UserController@store')
+Route::post('/usuarios', 'UserController@store')
+    ->name('users.store');
+
 Route::get('/usuarios/{id}/edit', 'UserController@edit')->where('id', '[0-9]+');
 
 //Utilizarse con el helper action

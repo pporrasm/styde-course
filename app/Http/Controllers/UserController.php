@@ -77,7 +77,7 @@ class UserController extends Controller
     {
         //return "Nuevo usuario";
         $title = "Crear nuevo usuario";
-        return view('createuser', compact('title'));
+        return view('users.create', compact('title'));
     }
 
     public function edit($id)
@@ -90,5 +90,31 @@ class UserController extends Controller
         //return "Editar usuario: {$id}";
         $title = "Editar usuario";
         return view('users.edit', compact('id', 'title', 'name', 'username', 'email'));
+    }
+
+    public function store(){
+        //$data = \request()->only(['nema','emai','password']);
+
+        //return redirect('/usuarios/nuevo')->withInput();
+
+        $data = request()->validate([
+            'name' => 'required'
+        ], ['name.required' => 'El campo es obligatorio']);
+
+        //si no se utilizara el metodo valitate de laravel
+        $data = \request()->all();
+        /*if (empty($data['name'])){
+            return redirect('usuarios/nuevo')->withErrors([
+                'name' => 'El campo es obligatorio'
+            ]);
+        }*/
+
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password'])
+        ]);
+        return redirect()->route('users.index');
+        //return view('users.store');
     }
 }

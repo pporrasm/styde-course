@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Profession;
+use App\Book;
 
 class UserSeeder extends Seeder
 {
@@ -73,6 +74,7 @@ class UserSeeder extends Seeder
         //Creación de 75 usuarios aleatorios
         //factory(User::class,75)->create();
         factory(User::class,10)->create();
+        factory(Book::class,30)->create();
 
     }
 }
