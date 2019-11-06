@@ -28,18 +28,21 @@
                     <td>{{$user->name}}</td>
                     <td>{{ $user->email }}</td>
                     <td><a href="{{ route('users.show', ['id' => $user->id]) }}">
+                            <button type="button" class="btn btn-primary">Ver Detalles</button>
+                        </a></td>
+                    <td><a href="{{ route('users.edit', ['id' => $user->id]) }}">
                             <button type="button" class="btn btn-primary">Editar</button>
                         </a></td>
                 </tr>
             @empty
-                <p> No existen usaurios registrados. </p>
+                <p> No existen usuarios registrados. </p>
             @endforelse
             </tbody>
         </table>
     </div>
 
 
-    @forelse ($users as $user)
+    {{--@forelse ($users as $user)
         <li>
             {{ $user->name }}. {{ $user -> email }}
             <a href="{{ url("/usuarios/{$user->id}") }}">Ver detalles</a>
@@ -49,7 +52,7 @@
         </li>
     @empty
         <p> No existen usaurios registrados. </p>
-    @endforelse
+    @endforelse--}}
 
 
     <hr/>

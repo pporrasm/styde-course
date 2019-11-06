@@ -8,11 +8,12 @@
         @if ($errors->any())
             <h4>Corregir los siguientes errores</h4>
             <div class="alert alert-danger">
-                <ul>
+                <!-- Directiva para errores en general -->
                     @foreach($errors->all() as $error)
+                    <ul>
                         <li>{{$error}}</li>
+                    </ul>
                     @endforeach
-                </ul>
             </div>
         @endif
         <form action="{{ route('users.store') }}" method="post">
@@ -21,20 +22,21 @@
                 <label for="name">Name</label>
                 <input class="form-control" type="text" id="formName" placeholder="Text input" name="name"
                        value="{{ old('name') }}">
+                <!-- Directiva para errores de por campo -->
                 @if($errors->has('name'))
                     <p>{{ $errors->first('name') }}</p>
                 @endif
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <input  name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                        placeholder="Enter email" value="{{ old('email') }}">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                     else.</small>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
             <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">

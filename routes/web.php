@@ -32,3 +32,9 @@ Route::get('/usuarios/{user}', 'UserController@show')
 //Route::get('/saludo/{name?}/{nickname?}', 'WelcomeUserController@index'); cuando tenemos una clase que queremos llamar
 //Pero si solo tenemos una lo dejamos solo con el nombre del controlador, la clase se llamara __invoke
 Route::get('/saludo/{name?}/{nickname?}', 'WelcomeUserController');
+
+Route::get('/usuarios/{user}/editar', 'UserController@edit')
+    ->name('users.edit');
+
+Route::put('/usuarios/{user}', 'UserController@update')
+    ->name('users.update');

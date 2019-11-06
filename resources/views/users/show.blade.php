@@ -23,10 +23,11 @@
             Email: {{ $user->email }}
         </p>
         <p>
-            <a href="{{ url("/usuarios") }}">Regresar</a><br/>
+            {{--<a href="{{ url("/usuarios") }}">Regresar</a><br/>
             <a href="{{ url()->previous() }}">Regresar a pagina previa</a><br/>
-            <a href="{{ action('UserController@index') }}">Regresar a con el controller</a><br/>
+            <a href="{{ action('UserController@index') }}">Regresar a con el controller</a><br/>--}}
             <a href="{{ route('users.index') }}">Regresar a con Route</a><br/>
+            <a href="{{ route('users.edit', ['id' => $user->id]) }}">Editar con rutas</a><br/>
 
         </p>
     </div>
