@@ -399,5 +399,20 @@ class UsersModuleTest extends TestCase
 
     }
 
+    /**
+     * @test
+     */
+    function it_delete_a_user(){
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
 
+        $this->delete("usuarios/{$user->id}")
+            ->assertRedirect('usuarios');
+
+        $this->assertDatabaseMissing('users', [
+            'email' => 'pporras@zoho.com'
+        ]);
+
+        $this->assertSame(0, User::count());
+    }
 }

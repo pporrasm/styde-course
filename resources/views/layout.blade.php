@@ -9,6 +9,7 @@
     <title>@yield('title') - {{ config('app.name', 'Laravel') }}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sticky-footer-navbar/">
+    <link href={{ asset('css/open-iconic-bootstrap.css') }} rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
